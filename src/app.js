@@ -3,6 +3,10 @@
 const express = require('express');
 const app = express();
 
+const errorHandler = require(`./middleware/500.js`)
+const notFound = require(`./middleware/404.js`);
+
+app.use(notFound);
 
 
 let start = (port = process.env.PORT) => {
