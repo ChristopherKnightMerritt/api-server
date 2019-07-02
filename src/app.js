@@ -28,4 +28,7 @@ let start = (port = process.env.PORT) => {
   });
 };
 
-module.exports = {start};
+module.exports = {
+  server: app,
+  start
+};
