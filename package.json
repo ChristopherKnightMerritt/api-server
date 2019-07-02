@@ -4,7 +4,7 @@
   "description": "API Server Template",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --coverage",
     "start": "node index.js"
   },
   "repository": {
@@ -21,8 +21,11 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "jest": "^24.8.0",
+    "mongodb-memory-server": "^5.1.5",
     "mongoose": "^5.6.0",
     "mongoose-schema-jsonschema": "^1.2.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "supertest": "^4.0.2"
   }
 }
