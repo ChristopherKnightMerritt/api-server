@@ -1,3 +1,5 @@
+[![Build Status](https://www.travis-ci.com/ChristopherKnightMerritt/api-server.svg?token=o8q7dbshCkeVPPqdvF9t&branch=master)](https://www.travis-ci.com/ChristopherKnightMerritt/api-server)
+
 # API Server
 
 ### Summary:
