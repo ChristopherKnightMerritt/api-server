@@ -13,7 +13,6 @@ router.put('/api/v1/:model/:id', handlePut);
 router.delete('/api/v1/:model/:id', handleDelete);
 
 function handleGetAll(request, response, next) {
-  console.log('handle called.');
   request.model.get()
     .then(data => {
       const output = {
