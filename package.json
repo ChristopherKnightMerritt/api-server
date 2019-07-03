@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose --coverage",
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint '**/*.js'"
   },
   "repository": {
     "type": "git",

@@ -15,7 +15,7 @@ supergoose.startDB = async () => {
 
   const mongooseOptions = {
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
   };
 
   await mongoose.connect(mongoUri, mongooseOptions, (err) => {
@@ -26,7 +26,7 @@ supergoose.startDB = async () => {
 supergoose.stopDB = () => {
   mongoose.disconnect();
   mongoServer.stop();
-}
+};
 
 describe('supergoose', () => {
   it('Supergoose works', () => {
