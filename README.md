@@ -17,3 +17,15 @@ Current end points:
 * Create a new folder with the name of the model to add
 * Create two files in that folder - one for the model, one for the schema.
 * The model needs to extend the generic mongo-model, and additional functionality can be added on this file.
+
+Ex: Adding a model for a 'project':
+```
+Models
+│   mongo-model.js  
+└─── book
+│   │   book-model.js
+│   │   book-schema.js 
+└─── project
+    │   project-model.js
+    │   project-schema.js
+```
