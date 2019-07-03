@@ -7,8 +7,10 @@ This is a template backend api server that uses node.js and mongoDB, which can b
 
 ### Endpoints:
 Current end points:
-* /api/v1/book:
-  * get, post, put, delete
+* /api/v1/book
+  * get, post
+* /api/v1/book/:id
+  * get, put, delete
   
 
 ### Adding new models: 
