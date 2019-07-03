@@ -14,5 +14,5 @@ describe('API Server', () => {
       .then(res => {
         expect(res.status).toBe(404);
       });
-  })
+  });
 });

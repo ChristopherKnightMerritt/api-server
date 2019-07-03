@@ -5,4 +5,4 @@ module.exports = (req, res, next) => {
   console.log('MODEL FINDER MODEL NAME:', modelName);
   req.model = require(`../models/${modelName}/${modelName}-model.js`);
   next();
-}
+};
