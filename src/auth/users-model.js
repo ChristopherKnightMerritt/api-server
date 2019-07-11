@@ -7,7 +7,7 @@ const users = new mongoose.Schema({
   username: {type: String, required: true, unique: true },
   password: { type: String, required: true },
   email: {type: String },
-  role: { type: String, default: 'user'},
+  role: { type: String, default: 'user', enum: ['superuser', 'admin', 'editor', 'user'] },
 }, {
   toObject: {virtuals: true};
   toJSON: {virtuals: true},
