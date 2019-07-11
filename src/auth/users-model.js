@@ -6,7 +6,10 @@ const jwt = require('jsonwebtoken');
 require('./roles-model.js');
 
 const TOKEN_EXPIRE = process.env.TOKEN_LIFETIME || '1h';
+const SINGLE_USE_TOKENS = !!process.env.SINGLE_USE_TOKENS;
 const SECRET = process.env.SECRET || 'shh its a secret';
+
+const usedTokens = new Set();
 
 const users = new mongoose.Schema({
   username: {type: String, required: true, unique: true },
@@ -55,5 +58,41 @@ users.methods.generateToken = function (type) {
   }
   return jwt.sign(token, SECRET, options);
 };
+
+users.methods.generateKey = function () {
+  return this.generateToken('key');
+};
+
+users.statics.authenticateToken = function (token) {
+  if (usedTokens.has(token)) {
+    return Promise.reject('Invalid Token');
+  }
+  try {
+    let parsedToken = jwt.verify(token, SECRET);
+    (SINGLE_USE_TOKENS) && parsedToken.type !== 'key' && usedTokens.add(token);
+    let query = {_id: parsedToken.id };
+    return this.findOne(query);
+  }
+  catch(e) {throw new Error('Invalid Token'); }
+};
+
+users.statics.authenticateBasic = function (auth) {
+  let query = {username: auth.username };
+  return this.findOne(query)
+    .then(user => user && user.comparePassword(auth.password))
+    .catch(error => {throw error; });
+};
+
+users.methods.comparePassword = function (password) {
+  return bcrypt.compare(password, this.password)
+    .then(valid => valid ? this : null);
+};
+
+users.methods.can = function (capability) {
+  console.log(`This route requires ${capability} to access. User ${this.username} has ${this.abilities[0].capabilities}`);
+  return this.abilities[0].capabilities.includes(capability);
+};
+
+
 
 module.exports = mongoose.model('users', users);

@@ -3,8 +3,8 @@
 const express = require('express');
 const authRouter = express.Router();
 const User = require('./users-model.js');
+const auth = require('./middleware.js');
 
-//auth middleware
 
 //oauth goes here
 
@@ -23,8 +23,9 @@ authRouter.post('/signup', (req, res, next) => {
     .catch(next);
 });
 
-authRouter.get('/signin', (req, res, next) => {
-  res.status(200).send('signin ok');
+authRouter.post('/signin', auth(), (req, res, next) => {
+  res.cookie('auth', req.token);
+  res.send(req.token);
 });
 
 module.exports = authRouter;

@@ -1,10 +1,4 @@
 'use strict';
-/**
- * Populate Roles Middleware
- * Populates each ACL role in the database on server start.
- * Credit to classmate Joseph Wolfe for coming up with the function this module is primarly based on.
- * @module src/middleware/populate-roles
- */
 
 const Roles = require('../auth/roles-model.js');
 
