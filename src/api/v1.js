@@ -6,11 +6,18 @@ const modelFinder = require('../middleware/model-finder.js');
 
 router.param('model', modelFinder);
 
+router.use(express.static('public'));
+
+router.get('/', handleHome);
 router.get('/api/v1/:model', handleGetAll);
 router.get('/api/v1/:model/:id', handleGetOne);
 router.post('/api/v1/:model', handlePost);
 router.put('/api/v1/:model/:id', handlePut);
 router.delete('/api/v1/:model/:id', handleDelete);
+
+function handleHome(request, response){
+  response.send('index.html');
+}
 
 function handleGetAll(request, response, next) {
   request.model.get()
