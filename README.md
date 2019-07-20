@@ -10,12 +10,13 @@ https://generic-api-server.herokuapp.com/api/v1/book
 
 ### Endpoints:
 Current end points:
-* GET     /api/v1/book
-* GET     /api/v1/book/:id
+* GET     ```/api/v1/book/ ```
+* POST    ```/api/v1/book/ ```
 
-* POST:   /api/v1/book/:id
-* PUT:    /api/v1/book/:id
-* DELETE: /api/v1/book/:id
+* GET     ```/api/v1/book/:id```
+* POST:   ```/api/v1/book/:id```
+* PUT:    ```/api/v1/book/:id```
+* DELETE: ```/api/v1/book/:id```
 
   
 
